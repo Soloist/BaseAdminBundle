@@ -18,4 +18,4 @@ Features
  * Basic CRUD
  * Form theme
 
-You can find documentation in the file [`https://github.com/Soloist/BaseAdminBundle/Resources/doc/index.md`](Resources/doc/index.md)
+You can find documentation in the file [`Resources/doc/index.md`](BaseAdminBundle/blob/master/Resources/doc/index.md)
