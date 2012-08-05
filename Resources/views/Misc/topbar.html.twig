@@ -1,0 +1,10 @@
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" href="{{ path('soloist_base_admin_index') }}">Soloist base admin</a>
+            {{ knp_menu_render(
+                'SoloistBaseAdminBundle:Builder:mainMenu',
+                {currentClass: 'active', template: 'SoloistBaseAdminBundle:Menu:top.html.twig'}) }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'SoloistBaseAdminBundle:Misc:headers.html.twig' %}
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                {% include 'SoloistBaseAdminBundle:Misc:flashes.html.twig' %}
+                {% block soloist_base_admin_body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% include 'SoloistBaseAdminBundle:Misc:javascripts.html.twig' %}
+    {% block soloist_base_admin_javascripts %}{% endblock %}
+</body>
+</html>

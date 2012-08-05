@@ -1,0 +1,26 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block soloist_base_admin_list %}
+{% if item.hasChildren and options.depth is not sameas(0) and item.displayChildren %}
+    {%- if item.level == 0 %}
+        <ul class="nav nav-list">
+            {{ block('children') }}
+        </ul>
+    {%- else %}
+        {{ block('children') }}
+    {%- endif %}
+{% endif %}
+{% endblock %}
+
+{% block soloist_base_admin_item %}
+    <li{{ item.level == 1 ? ' class="nav-header"': ''}}>
+        {%- if item.uri is not empty and (not item.current or options.currentAsLink) %}
+            {{ block('linkElement') }}
+        {%- else %}
+            {{ block('spanElement') }}
+        {%- endif %}
+        {{ block('list') }}
+    </li>
+{% endblock %}
+
+{% block soloist_base_admin_label %}{{ item.label | raw }}{% endblock %}

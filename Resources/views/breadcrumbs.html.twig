@@ -1,0 +1,26 @@
+{% block soloist_base_admin_breadcrumbs %}
+    <ul class="breadcrumb">
+        {%- for item in breadcrumbs %}
+            {{ block('item') }}
+        {%- endfor %}
+    </ul>
+{% endblock %}
+
+{% block soloist_base_admin_item %}
+    <li>
+        {%- if loop.index > 1 %}
+            <span class="divider">/</span>
+        {%- endif %}
+        {{ item.uri ? block('linkElement') : block('spanElement') }}
+    </li>
+{% endblock %}
+
+{% block soloist_base_admin_span_element %}
+    {{ item.title }}
+{% endblock %}
+
+{% block soloist_base_admin_link_element %}
+    <a href="{{ item.uri }}">
+        {{ item.title }}
+    </a>
+{% endblock %}

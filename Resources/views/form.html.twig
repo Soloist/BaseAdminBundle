@@ -1,0 +1,58 @@
+{% block field_row %}
+{% spaceless %}
+    <div class="control-group{{ errors|length > 0 ? ' error' : ''}}">
+        {{ form_label(form, label|default(null)) }}
+        <div class="controls">
+            {{ form_widget(form) }}
+        </div>
+        {{ form_errors(form) }}
+    </div>
+{% endspaceless %}
+{% endblock field_row %}
+
+{% block field_errors %}
+{% spaceless %}
+    {% for error in errors %}
+        <span class="help-inline">{{ error.messageTemplate|trans(error.messageParameters, 'validators') }}</span>
+    {% endfor %}
+{% endspaceless %}
+{% endblock field_errors %}
+
+{% block field_label %}
+{% spaceless %}
+    {% set attr = attr|merge({'for': id}) %}
+    {% set attr = attr|merge({'class': 'control-label'}) %}
+    {{ block('generic_label') }}
+{% endspaceless %}
+{% endblock field_label %}
+
+{% block soloist_jquery_date_widget %}
+{% spaceless %}
+    {{ date_pattern|replace({
+        '{{ year }}':  form_widget(form.year),
+        '{{ month }}': form_widget(form.month),
+        '{{ day }}':   form_widget(form.day),
+    })|raw }}
+
+    <script type="text/javascript">
+        if (undefined === window.soloist_form_date) { window.soloist_form_date = {} }
+        window.soloist_form_date["{{ uid }}"]             =  {{ jquery_options | json_encode(constant('JSON_FORCE_OBJECT')) | raw }};
+        window.soloist_form_date["{{ uid }}"].yearId      = '{{ form.year.getVar('id') }}';
+        window.soloist_form_date["{{ uid }}"].monthId     = '{{ form.month.getVar('id') }}';
+        window.soloist_form_date["{{ uid }}"].dayId       = '{{ form.day.getVar('id') }}';
+        window.soloist_form_date["{{ uid }}"].format      = '{% trans %}soloist.admin.js.date.format{% endtrans %}';
+        window.soloist_form_date["{{ uid }}"].placeholder = '{% trans %}soloist.admin.js.date.placeholder{% endtrans %}';
+    </script>
+{% endspaceless %}
+{% endblock %}
+
+{% block soloist_jquery_time_widget %}
+    {{ block('form_widget_simple') }}
+
+    <script type="text/javascript">
+        if (undefined === window.soloist_form_time) { window.soloist_form_time = {} }
+        window.soloist_form_time["{{ uid }}"]             =  {{ jquery_options | json_encode(constant('JSON_FORCE_OBJECT')) | raw }};
+        window.soloist_form_time["{{ uid }}"].id          = '{{ form.getVar('id') }}';
+        window.soloist_form_time["{{ uid }}"].placeholder = '{% trans %}soloist.admin.js.time.placeholder{% endtrans %}';
+    </script>
+{% endblock soloist_jquery_time_widget %}

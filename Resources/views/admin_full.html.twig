@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'SoloistBaseAdminBundle:Misc:headers.html.twig' %}
+</head>
+<body>
+    <header>
+        {% include 'SoloistBaseAdminBundle:Misc:topbar.html.twig' %}
+    </header>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                {% include 'SoloistBaseAdminBundle:Misc:leftbar.html.twig' %}
+                <aside class="well">
+                    <h2><small>Informations</small></h2>
+                    {% block soloist_base_admin_aside %}{% endblock %}
+                </aside>
+            </div>
+            <div class="span9">
+                {% include 'SoloistBaseAdminBundle:Misc:flashes.html.twig' %}
+                {% include 'SoloistBaseAdminBundle:Misc:breadcrumbs.html.twig' %}
+                {% block soloist_base_admin_body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% include 'SoloistBaseAdminBundle:Misc:javascripts.html.twig' %}
+    {% block soloist_base_admin_javascripts %}{% endblock %}
+</body>
+</html>

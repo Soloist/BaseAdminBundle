@@ -1,0 +1,1 @@
+{% extends 'SoloistBaseAdminBundle::admin_' ~ (app.request.query.has('nolayout') ? 'light' : 'full') ~ '.html.twig' %}

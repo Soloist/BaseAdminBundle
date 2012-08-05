@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <parameters>
+        <parameter key="soloist_base_admin.breadcrumbs.manager.class">Soloist\Bundle\BaseAdminBundle\Breadcrumbs\Manager</parameter>
+        <parameter key="soloist_base_admin.breadcrumbs.extension.class">Soloist\Bundle\BaseAdminBundle\Breadcrumbs\Extension</parameter>
+        <parameter key="soloist_jquery_date.class">Soloist\Bundle\BaseAdminBundle\Form\Extension\Type\JqueryDateType</parameter>
+        <parameter key="soloist_jquery_time.class">Soloist\Bundle\BaseAdminBundle\Form\Extension\Type\JqueryTimeType</parameter>
+    </parameters>
+
+    <services>
+        <service id="soloist_base_admin.breadcrumbs.manager" class="%soloist_base_admin.breadcrumbs.manager.class%">
+            <argument type="service" id="router" />
+        </service>
+
+        <service id="soloist_base_admin.breadcrumbs.extension" class="%soloist_base_admin.breadcrumbs.extension.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="soloist_base_admin.breadcrumbs.manager" />
+        </service>
+
+        <service id="soloist_breadcrumbs" alias="soloist_base_admin.breadcrumbs.manager" />
+
+        <service id="soloist_jquery_date" class="%soloist_jquery_date.class%">
+            <tag name="form.type" />
+        </service>
+
+        <service id="soloist_jquery_time" class="%soloist_jquery_time.class%">
+            <tag name="form.type" />
+            <argument type="service" id="translator.default" />
+        </service>
+
+        <service id="soloist_base_admin.type.purified_textarea"
+                 class="Soloist\Bundle\BaseAdminBundle\Form\Extension\Type\HTMLPurifiedTextareaType">
+            <argument type="service" id="soloist_base_admin.form.transformer.html_purifier" />
+            <tag name="form.type" alias="html_purified_textarea" />
+        </service>
+
+        <service id="soloist_base_admin.form.transformer.html_purifier" class="Exercise\HTMLPurifierBundle\Form\HTMLPurifierTransformer">
+            <argument type="service" id="exercise_html_purifier.default" />
+        </service>
+
+    </services>
+
+</container>

@@ -1,0 +1,26 @@
+{% extends 'SoloistBaseAdminBundle::admin.html.twig' %}
+
+{% block soloist_base_admin_body %}
+   <h1>Ajouter {{ params.articles.singular.undefined }} {{ params.singular }}</h1>
+
+    <form class="form-horizontal" method="POST" action="{{ path(params.createRoute) }}" {{ form_enctype(form) }}>
+        <fieldset>
+            {% include params.formTemplate %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="soloist_node_create">
+                    Créer {{ params.articles.singular.defined }} {{ params.singular }}
+                </button>
+                <a href="{{ path(params.indexRoute) }}" class="btn">Annuler</a>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}
+
+{% block soloist_base_admin_aside %}
+<dl>
+    <dt><span class="label">Nouvel élément de type</span></dt>
+    <dd>{{ params.singular }}</dd>
+</dl>
+{% endblock %}

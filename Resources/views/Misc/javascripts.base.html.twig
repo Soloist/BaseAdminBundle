@@ -1,0 +1,16 @@
+{% block soloist_base_admin_js %}
+
+    <script type="text/javascript">
+        window.soloist = { locale: '{{ app.request.locale }}' };
+    </script>
+    {% javascripts  '@SoloistBaseAdminBundle/Resources/js/*.js'
+                    filter="?yui_js" %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script type="text/javascript" src="/bundles/SoloistBaseAdmin/js/redactor.js"></script>
+    {% javascripts  '@SoloistBaseAdminBundle/Resources/coffee/*.coffee'
+                    filter="coffee, ?yui_js" %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}

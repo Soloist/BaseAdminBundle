@@ -1,0 +1,8 @@
+soloist.admin:
+    js:
+        date:
+            format: 'dd/mm/yyyy'
+            placeholder: Cliquez pour sélectionner une date
+    timepicker:
+        placeholder: Cliquez pour sélectionner une heure
+

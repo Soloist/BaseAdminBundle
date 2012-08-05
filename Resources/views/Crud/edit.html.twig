@@ -1,0 +1,34 @@
+{% extends 'SoloistBaseAdminBundle::admin.html.twig' %}
+
+{% block soloist_base_admin_body %}
+   <h1>Editer {{ params.articles.singular.undefined }} {{ params.singular }}</h1>
+
+    <form class="form-horizontal" method="POST" action="{{ path(params.updateRoute, object.routeParams) }}" {{ form_enctype(form) }}>
+        <fieldset>
+            {% include params.formTemplate %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="soloist_node_create">Mettre à jour</button>
+                <a class="btn btn-danger ask-delete"
+                   href="{{ path(params.deleteRoute, object.routeParams) }}">
+                    <i class="icon-trash icon-white"></i> Supprimer
+                </a>
+                <a href="{{ path(params.indexRoute) }}" class="btn">Annuler</a>
+                {% for action in params.object_actions %}
+                    <a class="btn"
+                       href="{{ path(action.route, object.routeParams) }}">
+                        {{ action.label }}
+                    </a>
+                {% endfor %}
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}
+
+{% block soloist_base_admin_aside %}
+<dl>
+    <dt><span class="label">Nouvel élément de type</span></dt>
+    <dd>{{ params.singular }}</dd>
+</dl>
+{% endblock %}

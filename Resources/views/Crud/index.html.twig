@@ -1,0 +1,77 @@
+{% extends 'SoloistBaseAdminBundle::admin.html.twig' %}
+
+{% block soloist_base_admin_body %}
+
+<h1>Gestion {{ params.articles.plural.undefined }} {{ params.plural }}</h1>
+<table class="table table-bordered table-striped crud-list table-condensed">
+    <thead>
+        <tr>
+            {% for key, field in params.display %}
+                <th class="crud-{{ key }}{% if currentSort is not empty and currentSort == key %} selected{% endif %}">
+                    {{ field.label }}
+                    {% if params.sortable %}
+                    <a href="{{ path(params.indexRoute, {'key': key, 'direction': 'asc'}) }}">
+                        <i class="icon-chevron-up"></i>
+                    </a>
+                    <a href="{{ path(params.indexRoute, {'key': key, 'direction': 'desc'}) }}"><i class="icon-chevron-down"></i></a>
+                    {% endif %}
+                </th>
+            {% endfor %}
+            <th class="crud-actions">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in objects %}
+            <tr>
+                {% for key, field in params.display %}
+                    <td class="crud-{{ key }}">
+                        {{ key == 'id' ? '#' : ''}}
+                        {% if field.type is defined %}
+                            {% include 'SoloistBaseAdminBundle:Crud:Types/' ~ field.type ~'.html.twig' %}
+                        {% else %}
+                            {{ attribute(object, key) }}
+                        {% endif %}
+                    </td>
+                {% endfor %}
+                <td class="crud-actions">
+                    <a class="btn btn-mini"
+                       href="{{ path(params.editRoute, object.routeParams) }}">
+                        <i class="icon-cog"></i> Editer
+                    </a>
+                    {% for action in params.object_actions %}
+                        <a class="btn btn-mini"
+                           href="{{ path(action.route, object.routeParams) }}">
+                            {{ action.label }}
+                        </a>
+                    {% endfor %}
+                    <a class="btn btn-mini btn-danger ask-delete"
+                       href="{{ path(params.deleteRoute, object.routeParams) }}">
+                        <i class="icon-trash icon-white"></i> Supprimer
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="form-actions">
+        <div class="btn-group">
+            <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="#">
+                Nouveau
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="{{ path(params.newRoute) }}">{{ params.singular | capitalize }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block soloist_base_admin_aside %}
+<dl>
+    <dt><span class="label">Nombre d'{{ params.plural }}</span></dt>
+    <dd>{{ objects | length }}</dd>
+</dl>
+{% endblock %}
