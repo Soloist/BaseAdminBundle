@@ -7,7 +7,7 @@ How to install
 --------------
 
 ###1) Install files
-##a) Install with composer
+####a) Install with composer
 
 ```JSON
     "require": {
