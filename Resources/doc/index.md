@@ -6,7 +6,8 @@ BaseAdminBundle
 How to install
 --------------
 
-###1) Install with composer
+###1) Install files
+##a) Install with composer
 
 ```JSON
     "require": {
@@ -20,6 +21,82 @@ How to install
 Then type in your shell:
 
   composer.phar update
+
+###2) Add it to your app/AppKernel.php file:
+
+```PHP
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ... Some bundle registrations ...
+
+            // And the soloist base admin bundle
+            new Soloist\Bundle\BaseAdminBundle\SoloistBaseAdminBundle(),
+        );
+
+        // ... More instructions and registrations ...
+    }
+}
+```
+
+###3) Add it to your route configuration
+
+```YAML
+SoloistBaseAdminBundle:
+    resource: "@SoloistBaseAdminBundle/Resources/config/routing.xml"
+    prefix:   /admin
+```
+
+###4) Install assets
+
+```Shell
+php app/console assets:install web/
+```
+
+###5) Add some files like... bootstrap
+The Soloist base admin bundle is built with html totaly compatible with bootstrap.
+So it's easy to have a clean administration without spend time on the design.
+
+There is an example of files you can create, this example use less :
+
+```Twig
+{% extends 'SoloistBaseAdminBundle:Misc:headers.base.html.twig' %}
+{# app/Resources/SoloistBaseAdminBundle/views/Misc/headers.html.twig #}
+{% block soloist_base_admin_head %}
+
+    {{ parent() }}
+    {% stylesheets '../app/Resources/less/backend.less'
+                   filter="less, ?yui_css" %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+{% endblock %}
+```
+
+```CSS
+{# app/Resources/less/backend.less #}
+@import '../bootstrap/less/bootstrap.less';
+
+// This file is not include by default, because you're not forced to use less and the default design
+@import '../../../vendor/soloist/base-admin-bundle/Soloist/Bundle/BaseAdminBundle/Resources/less/backend.less';
+```
+
+```Twig
+{# app/Resources/SoloistBaseAdminBundle/views/Misc/javascripts.html.twig #}
+{% extends 'SoloistBaseAdminBundle:Misc:javascripts.base.html.twig' %}
+{% block soloist_base_admin_js %}
+    {{ parent() }}
+
+    {% javascripts
+                    '%kernel.root_dir%/Resources/js/bootstrap/*.js'
+        filter="?yui_js" %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+```
+
 
 How to use
 ----------
