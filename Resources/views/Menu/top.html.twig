@@ -1,6 +1,6 @@
 {% extends 'knp_menu.html.twig' %}
 
-{% block soloist_base_admin_root %}
+{% block root %}
 {% if item.hasChildren and options.depth is not sameas(0) and item.displayChildren %}
     <ul class="nav">
         {{ block('children') }}
@@ -8,7 +8,7 @@
 {% endif %}
 {% endblock %}
 
-{% block soloist_base_admin_list %}
+{% block list %}
 {% if item.hasChildren and options.depth is not sameas(0) and item.displayChildren %}
     <ul class="dropdown-menu">
         {{ block('children') }}
@@ -16,7 +16,7 @@
 {% endif %}
 {% endblock %}
 
-{% block soloist_base_admin_item %}
+{% block item %}
     {% import 'knp_menu.html.twig' as parent %}
     {% if item.displayed %}
     {# building the class of the item #}
@@ -55,7 +55,7 @@
     {% endif %}
 {% endblock %}
 
-{% block soloist_base_admin_link_element %}
+{% block linkElement %}
 
     {%- set attributes = item.linkAttributes %}
     {%- if item.hasChildren %}
@@ -70,7 +70,7 @@
     </a>
 {% endblock %}
 
-{% block soloist_base_admin_span_element %}
+{% block spanElement %}
     {% import 'knp_menu.html.twig' as parent %}
     {%- set attributes = item.linkAttributes|merge({class: 'no-link'}) %}
     {%- if item.hasChildren %}
