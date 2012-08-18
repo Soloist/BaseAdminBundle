@@ -1,11 +1,18 @@
 {
     "version": "1.0.0",
+
     "name": "soloist/base-admin-bundle",
+
     "description": "Base administration",
+
     "keywords": ["dashboard", "admin", "menu"],
+
     "homepage": "https://github.com/Soloist/BaseAdminBundle",
+
     "type": "library",
+
     "license": "MIT",
+
     "authors": [
         {
             "name": "Yohan GIARELLI",
@@ -18,13 +25,17 @@
             "homepage": "http://nekland.fr"
         }
     ],
+
     "require": {
-        "php":                          ">=5.3.0",
+        "symfony/symfony": "*",
         "knplabs/knp-menu-bundle":      "v1.0.0",
-        "exercise/htmlpurifier-bundle": "dev-master"
+        "exercise/htmlpurifier-bundle": "dev-master",
+        "sensio/framework-extra-bundle": "*"
     },
+
     "autoload": {
         "psr-0": { "Soloist\\Bundle\\BaseAdminBundle": "" }
     },
+
     "target-dir": "Soloist/Bundle/BaseAdminBundle"
 }
