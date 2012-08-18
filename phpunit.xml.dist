@@ -14,7 +14,7 @@
     bootstrap                   = "Tests/bootstrap.php" >
 
     <testsuites>
-        <testsuite name="Soloist Core Test Suite">
+        <testsuite name="Soloist Base Admin Test Suite">
             <directory>Tests</directory>
         </testsuite>
     </testsuites>
