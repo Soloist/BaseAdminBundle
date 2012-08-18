@@ -27,15 +27,6 @@ twig:
     debug: %kernel.debug%
     strict_variables: %kernel.debug%
 
-stof_doctrine_extensions:
-    default_locale: fr_FR
-    orm:
-        default:
-            tree:          true
-            sluggable:     true
-            timestampable: true
-            sortable:      true
-
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%

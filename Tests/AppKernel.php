@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new \Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new \Soloist\Bundle\BaseAdminBundle\SoloistCoreBundle(),
+            new \Soloist\Bundle\BaseAdminBundle\SoloistBaseAdminBundle(),
         );
     }
 

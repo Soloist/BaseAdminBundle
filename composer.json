@@ -30,8 +30,9 @@
         "symfony/symfony":                  "*",
         "knplabs/knp-menu-bundle":          "v1.0.0",
         "sensio/framework-extra-bundle":    "*",
-        "doctrine/doctrine-bundle": "*",
-        "doctrine/orm": "*"
+        "doctrine/doctrine-bundle":         "*",
+        "doctrine/orm":                     "*",
+        "symfony/assetic-bundle":            "dev-master"
     },
 
     "require-dev": {

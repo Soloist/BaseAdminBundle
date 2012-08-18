@@ -2,7 +2,7 @@
 
 namespace Soloist\Bundle\BaseAdminBundle\Tests\Controller;
 
-use Soloist\Bundle\BaseAdminBundle\Test\WebTestCase;
+use Soloist\Bundle\BaseAdminBundle\Tests\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
