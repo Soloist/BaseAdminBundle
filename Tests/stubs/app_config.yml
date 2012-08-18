@@ -1,0 +1,46 @@
+framework:
+    secret: test
+    test: ~
+    session:
+        storage_id: session.storage.filesystem
+    form: true
+    csrf_protection: false
+    validation:
+        enabled: true
+        enable_annotations: true
+    router:
+        resource: %kernel.root_dir%/stubs/routing.yml
+    templating:
+        engines: [twig]
+
+doctrine:
+    dbal:
+        driver: pdo_sqlite
+        path: %kernel.cache_dir%/db.sqlite
+        charset: UTF8
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+twig:
+    debug: %kernel.debug%
+    strict_variables: %kernel.debug%
+
+stof_doctrine_extensions:
+    default_locale: fr_FR
+    orm:
+        default:
+            tree:          true
+            sluggable:     true
+            timestampable: true
+            sortable:      true
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        [ SoloistBaseAdminBundle ]
+    filters:
+        less: ~
+        coffee: ~

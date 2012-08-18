@@ -27,15 +27,21 @@
     ],
 
     "require": {
-        "symfony/symfony": "*",
-        "knplabs/knp-menu-bundle":      "v1.0.0",
-        "exercise/htmlpurifier-bundle": "dev-master",
-        "sensio/framework-extra-bundle": "*"
+        "symfony/symfony":                  "*",
+        "knplabs/knp-menu-bundle":          "v1.0.0",
+        "sensio/framework-extra-bundle":    "*",
+        "doctrine/doctrine-bundle": "*",
+        "doctrine/orm": "*"
+    },
+
+    "require-dev": {
     },
 
     "autoload": {
         "psr-0": { "Soloist\\Bundle\\BaseAdminBundle": "" }
     },
+
+    "minimum-stability": "dev",
 
     "target-dir": "Soloist/Bundle/BaseAdminBundle"
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Soloist\Bundle\CoreBundle\Tests;
+namespace Soloist\Bundle\BaseAdminBundle\Tests;
 
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
