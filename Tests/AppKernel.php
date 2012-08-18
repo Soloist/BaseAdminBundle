@@ -45,11 +45,11 @@ class AppKernel extends Kernel
 
     public function getCacheDir()
     {
-        return sys_get_temp_dir().'/'.Kernel::VERSION.'/soloist_core/cache/'.$this->environment;
+        return sys_get_temp_dir().'/'.Kernel::VERSION.'/soloist_base_admin/cache/'.$this->environment;
     }
 
     public function getLogDir()
     {
-        return sys_get_temp_dir().'/'.Kernel::VERSION.'/soloist_core/logs';
+        return sys_get_temp_dir().'/'.Kernel::VERSION.'/soloist_base_admin/logs';
     }
 }
