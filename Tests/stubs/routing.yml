@@ -1,0 +1,3 @@
+SoloistBaseAdminBundle:
+    resource: "@SoloistBaseAdminBundle/Resources/config/routing.xml"
+    prefix:   /
