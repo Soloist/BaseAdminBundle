@@ -6,7 +6,7 @@ namespace Soloist\Bundle\BaseAdminBundle\Form\Extension\Type;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface,
     Symfony\Component\Form\Extension\Core\Type\TimeType,
     Symfony\Component\Form\FormBuilderInterface,
-    Symfony\Component\Form\FormViewInterface,
+    Symfony\Component\Form\FormView,
     Symfony\Component\Form\FormInterface,
     Symfony\Bundle\FrameworkBundle\Translation\Translator;
 
@@ -38,7 +38,7 @@ class JqueryTimeType extends TimeType
         parent::buildForm($builder, $options);
     }
 
-    public function buildView(FormViewInterface $view, FormInterface $form, array $options)
+    public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->setVar('jquery_options', $this->jQueryOptions);
         $view->setVar('uid', uniqid());
