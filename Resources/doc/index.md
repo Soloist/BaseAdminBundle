@@ -226,6 +226,64 @@ myapp_admin_product_delete:
 If you don't precise routes in your configuration, you must precise a prefix.
 The dashboard will add automaticly the good sufix.
 
+###4) Add the listener
+
+The listener is a service. Usually you create the directory "EventListener" and a class in it.
+
+Look at this example:
+
+```PHP
+<?php
+
+namespace MyProject\MyBundle\EventListener;
+
+use Soloist\Bundle\BaseAdminBundle\Menu\Event\Configure;
+
+/**
+ * This class allow us to configure the menu of the administration
+ */
+class AdminListener
+{
+    public function onConfigureNewMenu(Configure $event)
+    {
+        $root = $event->getRoot();
+        $root->addChild('Product', array(
+            'route'           => 'myapp_admin_product_new'
+        ));
+    }
+
+    public function onConfigureTopMenu(Configure $event)
+    {
+        $root = $event->getRoot();
+        $root->addChild('Products', array('route' => 'myapp_admin_product_index'));
+    }
+}
+```
+
+Of course it don't work alone. You must add it in your buundle configuration as service. Here is an example with the xml syntax:
+
+```XML
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <parameters>
+        <parameter key="myproject.mybundle.listener.menu.class">MyProject\MyBundle\EventListener\AdminListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="myproject.mybundle.listener.menu" class="%myproject.mybundle.listener.menu.class%">
+            <tag name="kernel.event_listener" event="soloist_base_admin.configure.menu.new"  method="onConfigureNewMenu" />
+            <tag name="kernel.event_listener" event="soloist_base_admin.configure.menu.top"  method="onConfigureTopMenu" />
+        </service>
+    </services>
+
+</container>
+```
+
 Do More
 -------
 
