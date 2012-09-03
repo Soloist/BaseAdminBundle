@@ -106,7 +106,7 @@ li.redactor_toolbar_right {
 .redactor_toolbar li a span {
 	display: block;
 	text-indent: -9999px;
-	background: url(/bundles/SoloistBaseAdmin/images/icons.png) no-repeat top left;
+	background: url(/bundles/soloistbaseadmin/images/icons.png) no-repeat top left;
 }
 
 .redactor_toolbar li a:hover {
