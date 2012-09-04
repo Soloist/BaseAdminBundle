@@ -76,6 +76,7 @@ abstract class ORMCrudController extends Controller
         'updateSentence' => null,
         'deleteSentence' => null,
         'sortable'       => false,
+        'globalTitle'    => 'Soloist Base Admin'
     );
 
     /**
@@ -83,6 +84,7 @@ abstract class ORMCrudController extends Controller
      * @var array
      */
     protected $mergedParams = null;
+
 
     /**
      * List Action
@@ -281,6 +283,10 @@ abstract class ORMCrudController extends Controller
                 $params['feminine'] ? 'e' : ''
             );
         }
+
+
+        $title = $this->container->getParameter('soloist_base_admin_title');
+        $params['globalTitle'] = $title;
 
         return $this->mergedParams = $params;
     }

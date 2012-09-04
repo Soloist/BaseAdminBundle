@@ -29,5 +29,10 @@ class SoloistBaseAdminExtension extends Extension
             array('SoloistBaseAdminBundle::form.html.twig'),
             $container->getParameter('twig.form.resources')
         ));
+
+
+        foreach ($config as $key => $value) {
+            $container->setParameter('soloist_base_admin_' . $key, $value);
+        }
     }
 }

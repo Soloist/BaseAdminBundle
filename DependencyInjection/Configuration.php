@@ -18,7 +18,11 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('soloist_base_admin');
+        $treeBuilder->root('soloist_base_admin')
+            ->children()
+                ->scalarNode('title')->defaultValue('Soloist Base Admin')->end()
+            ->end()
+        ;
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
